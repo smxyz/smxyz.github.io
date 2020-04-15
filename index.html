@@ -250,7 +250,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/13/%E8%BF%88%E5%87%BA%E5%AE%B9%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E6%AD%A5%20-%20Docker%20CE%E7%9A%84%E9%83%A8%E7%BD%B2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/undefined/abbrlink.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="孙锰">
@@ -269,7 +269,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/04/13/%E8%BF%88%E5%87%BA%E5%AE%B9%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E6%AD%A5%20-%20Docker%20CE%E7%9A%84%E9%83%A8%E7%BD%B2/" itemprop="url">迈出容器学习第一步 - Docker CE的部署</a></h1>
+                <a class="post-title-link" href="/undefined/abbrlink.html" itemprop="url">迈出容器学习第一步 - Docker CE的部署</a></h1>
         
 
         <div class="post-meta">
@@ -373,17 +373,46 @@
 
       
         
-          <h1 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h1><p>Docker要求运行在<code>CentOS 6.5</code>及以上的版本中，系统为64位、系统内核版本为<code>2.6.32-431</code>或者更高；Docker运行在<code>CentOS 7</code>上时，要求系统为64位、系统内核版本为<code>3.10</code>以上。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/04/13/%E8%BF%88%E5%87%BA%E5%AE%B9%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%AC%E4%B8%80%E6%AD%A5%20-%20Docker%20CE%E7%9A%84%E9%83%A8%E7%BD%B2/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+          
+            <h1 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h1><p>Docker要求运行在<code>CentOS 6.5</code>及以上的版本中，系统为64位、系统内核版本为<code>2.6.32-431</code>或者更高；Docker运行在<code>CentOS 7</code>上时，要求系统为64位、系统内核版本为<code>3.10</code>以上。</p>
+<h1 id="版本分类"><a href="#版本分类" class="headerlink" title="版本分类"></a>版本分类</h1><p>Docker引擎目前分为两个版本：社区版（CE）和企业版（EE），社区版包括大部分的核心功能，企业版则通过付费形式提供认证支持、镜像管理、容器托管、安全扫描等高级服务。通常情况下，使用社区版本可以满足大部分需求。</p>
+<h1 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h1><ul>
+<li>Docker引擎：包括支持在桌面系统或云平台安装Docker，以及为企业提供简单安全弹性的容器集群编排和管理；</li>
+<li>Docker Hub：官方提供的云托管服务器，可以提供公有或私有的镜像仓库；</li>
+<li>Docker Cloud：官方提供的容器云服务，可以完成容器的部署与管理，可以完整地支持容器化项目；</li>
+</ul>
+<h1 id="安装部署"><a href="#安装部署" class="headerlink" title="安装部署"></a>安装部署</h1><h2 id="如何安装"><a href="#如何安装" class="headerlink" title="如何安装"></a>如何安装</h2><p>这里以CentOS系统为例，讲解Docker CE的安装方法：</p>
+<ol>
+<li>yum安装</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 安装依赖包</span></span></span><br><span class="line">yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 添加阿里云仓库</span></span></span><br><span class="line">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line">yum makecache fast  </span><br><span class="line">yum -y install docker-ce</span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用安装脚本</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 使用root权限登录系统</span></span></span><br><span class="line">su - root</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 确保yum包更新到最新 </span></span></span><br><span class="line">yum update</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 下载并执行安装脚本</span></span></span><br><span class="line">curl -fsSL https://get.docker.com -o get-docker.sh </span><br><span class="line">sh get-docker.sh </span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启动服务</span></span></span><br><span class="line">systemctl start docker</span><br></pre></td></tr></table></figure>
+
+<h2 id="镜像加速"><a href="#镜像加速" class="headerlink" title="镜像加速"></a>镜像加速</h2><p>由于国内网络问题，拉取Docker镜像的速度十分缓慢，这时我们可以通过配置加速器来解决，使用的是网易或阿里云的镜像地址。Docker使用<code>/etc/docker/daemon.json</code>来配置<code>Daemon</code>，windows系统中使用<code>%programdata%\docker\config\daemon.json</code>。在daemon配置文件中加入下列代码：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;    </span><br><span class="line">    <span class="attr">"registry-mirrors"</span>: [<span class="string">"http://hub-mirror.c.163.com"</span>]</span><br><span class="line">&#125; </span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="attr">"registry-mirrors"</span>: [<span class="string">"https://fea5ec4i.mirror.aliyuncs.com"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="卸载删除"><a href="#卸载删除" class="headerlink" title="卸载删除"></a>卸载删除</h2><ol>
+<li>删除操作</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 删除docker</span></span></span><br><span class="line">yum remove docker-ce </span><br><span class="line">rm -rf /var/lib/docker</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>卸载操作</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 卸载docker</span></span></span><br><span class="line">yum remove docker docker-client docker-client-latest docker-common docker-latest docker-latest-logrotate docker-logrotate docker-selinux docker-engine-selinux docker-engine</span><br></pre></td></tr></table></figure>
+
+
+          
         
       
     </div>
+	<div>
+	  
+	</div>
     
     
     
